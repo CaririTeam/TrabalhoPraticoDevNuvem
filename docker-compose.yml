@@ -1,0 +1,48 @@
+services:
+  app:
+    build: 
+      context: ./app
+      
+    volumes:
+      - ./app:/app
+    links:
+      - db
+      
+    ports:
+      - "5000:5000"
+      
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      
+    depends_on:
+      - db
+  
+
+  db:
+    image: mysql:5.7
+    
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      
+    ports:
+      - "32000:3306"
+      
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data:/var/lib/mysql
+      
+  
+      
+  web:
+    image: nginx:latest
+    
+    ports:
+      - "8000:80"
+          
+    volumes:
+      - ./app/templates:/usr/share/nginx/html
+    depends_on:
+      - app
+
+  

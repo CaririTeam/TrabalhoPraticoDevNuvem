@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar dados</title>
+    
+    <script>
+        function mensagem() {
+            alert("Dados inseridos com sucesso!");
+        }
+    </script>
+    
+</head>
+<body>
+    <h1>Adicionar Novo Funcionário</h1>
+    <form method="post" onsubmit="mensagem()">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        <button type="submit">Adicionar</button>
+    </form>
+    <br>
+    <br>
+    <a href="/">Voltar para a Página Inicial</a>
+    <br>
+    <a href="/employee_data">Ver Dados dos Funcionários</a>
+</body>
+</html>
